@@ -1,8 +1,9 @@
 # Alfred Taskpaper Workflow
 
-[Alfred 3 workflow](https://www.alfredapp.com/workflows/) to search and create tasks in [TaskPaper 3](https://www.taskpaper.com).
+[Alfred 2 workflow](https://www.alfredapp.com/workflows/) to search and create tasks in [TaskPaper 3](https://www.taskpaper.com).
+
 ## Install
-To install download [TaskPaper.alfredworkflow](TaskPaper.alfredworkflow) and double-click to open in Alfred 3. Work flow is not uploaded to [Packal](http://www.packal.org) yet.
+To install download [TaskPaper.alfredworkflow](TaskPaper.alfredworkflow) and double-click to open in Alfred 2. Alternatively, download what should be the same file hosted on [Packal](http://www.packal.org/workflow/taskpaper).
 
 ## Configure document and get help
 Use the keywords:
