@@ -1,10 +1,10 @@
 # Alfred Taskpaper Workflow
 
 [Alfred 3 workflow](https://www.alfredapp.com/workflows/) to search and create tasks in [TaskPaper 3](https://www.taskpaper.com).
+## Install
+To install download [TaskPaper.alfredworkflow](TaskPaper.alfredworkflow) and double-click to open in Alfred 3. Work flow is not uploaded to [Packal](http://www.packal.org) yet.
 
-Easiest to install directly from [Packal](http://www.packal.org)
-
-## Configure workflow document and get help
+## Configure document and get help
 Use the keywords:
 - **d:setdoc** to configure the TaskPapar document the workflow will work on. Most commands will prompt for this before they will work.
 - **d:help** to show a brief summary of commands and settings
