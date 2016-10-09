@@ -7,9 +7,11 @@
 // the same boiler plate code, all code is in here. The single run function
 // calls a named function with args.
 
-// Known issues
-// SHOULD
+// Known issues and new features
+// MUST
+// - dos does not select item if selection is in sidebar
 // - domail creates an empty entry if Mail app not open - warn
+// SHOULD
 // - should not automatically make the resource dir folder
 // COULD
 // - domail could work Outlook too
@@ -338,6 +340,7 @@ function getProjectsForScriptFilter() {
     //TODO: Inbox should show number of items (or indicate it does not exist)
 
     var inboxItem = {
+        'uid': '_inbox',
         'title': '* Inbox',
         'arg': '_inbox',
         'icon': {
@@ -346,6 +349,7 @@ function getProjectsForScriptFilter() {
     }
 
     var stackItem = {
+        'uid': '_stack',
         'title': '* Stack',
         'subtitle': '? items',
         'arg': '_stack',
@@ -355,6 +359,7 @@ function getProjectsForScriptFilter() {
     }
 
     var allItem = {
+        'uid': '_all',
         'title': '* Show all',
         'subtitle': projects.length + ' items',
         'arg': '_all',
@@ -406,7 +411,9 @@ function getUsedTagsForScriptFilter() {
             var appendedSubtitle = nitems + " items when combined with '" + currentPathFilter + "'"
         }
         return {
+            'uid': tagname,
             'title': tagname,
+            'autocomplete': tagname,
             'subtitle': appendedSubtitle,
             'arg': appendedSearch,
             'icon': {
@@ -486,9 +493,9 @@ function _TPGenerateProjectItems(editor, options) {
         depth = item.ancestors.length - 1 // The first is birch.js
         //debugger
         return {
-            //'uid': item.id,
+            'uid': item.id,
             'title': Array(depth + 1).join('      ') + item.bodyString,
-
+            'autocomplete': item.bodyString,
             'subtitle': item.children.length + ' items',
             'arg': item.id,
             'icon': {
@@ -517,8 +524,9 @@ function _TPGetSavedSearches(editor, options) {
 
     return itemList.map(function(item){
         return {
-            //'uid': item.id,
+            'uid': item.id,
             'title': item.bodyContentString,
+            'autocomplete': item.bodyContentString,
             'subtitle': item.getAttribute('data-search'),
             'arg': item.getAttribute('data-search'),
             'icon': {
@@ -545,7 +553,9 @@ function scriptFilterSearch(query) {
             console.log(item.bodyString + '--' + item.attributes)
             return {
                 //'title': Array(depth + 1).join('      ') + item.bodyString,
+                'uid': item.id,
                 'title': item.bodyString,
+                'autocomplete': item.bodyString,
                 'subtitle': path.join('/') + ' (' + datatype + ')',
                 'arg': item.id,
                 'icon': {
