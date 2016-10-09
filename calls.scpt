@@ -268,7 +268,7 @@ function generateRemindersText() {
 
     var lines = []
     var rs = searchString = getRemindSearchString()
-    if (rs === '') {
+    if (rs === '_remind_disabled') {
         return
     }
 
@@ -594,7 +594,7 @@ function scriptFilterRemindSetting() {
 
     items.push({
         'title': '-- Disable remind popup (nagging can be good though)',
-        'arg': '',
+        'arg': '_remind_disabled',
         'icon': {
             'path': 'taskpapericon.png'
         },
@@ -718,7 +718,7 @@ class PlistSettings {
         // Create folder and file if missing
         var d = this._readPlist()
         if (d == null || d == undefined) {
-            dir = plistPath.replace('/settings.plist', '')
+            var dir = plistPath.replace('/settings.plist', '')
             log('Ensuring directory exists: ' + dir)
             if (!fileExists(dir)) {
                 console.log('Creating directory: ' + dir)
