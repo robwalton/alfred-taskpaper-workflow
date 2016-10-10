@@ -1009,7 +1009,7 @@ echo $1</string>
 				<key>scriptfile</key>
 				<string>todo_scriptfilter</string>
 				<key>subtext</key>
-				<string>Select saved search to pop up when 'do' called with no args</string>
+				<string>Select saved search to pop up when 'do' called with no args (d:setremind)</string>
 				<key>title</key>
 				<string>Set Remind Search</string>
 				<key>type</key>
@@ -2219,7 +2219,7 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>See packal.org for full instructions
+	<string>See packal.org/workflow/taskpaper for full instructions
 
 # Keywords #
 
@@ -2229,12 +2229,12 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 
 - do			open the workflow’s TaskPaper document
 - do &lt;task&gt;	create a new task
-- domail		create tasks from emails selected in Apple’s Mail app.
+- domail		create tasks from emails selected in Apple’s Mail app
 
-- dos		search for and then select a projects, task or note
+- dos		search for and then select a project, task or note
 - dop		search for and then focus on a project
 - doss		select and apply a search saved from the document
-- dot		search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
+- dot		search for and then append a tag to any current search Use the modifier _cmd_ to instead clear the search before appending the tag
 
 - dopr		open resources associated with a project or to add a folder or alias resource if none exist.
 
