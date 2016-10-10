@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.github.robwalton.taskpaperalfredworkflow</string>
+	<string>com.github.robwalton.taskpaper-alfred-workflow</string>
 	<key>category</key>
 	<string>Used</string>
 	<key>connections</key>
