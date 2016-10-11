@@ -93,18 +93,19 @@ function showProject(id) {
 
     if (id == '_all') {
         // Open whole doc
-        itemPathFilter = ''
+        setFocusedItemToId('_root')
+        setItemPathFilter('')
     } else if (id == '_stack') {
         // Open scratch items
-        itemPathFilter = '/child::* except project'
+        setFocusedItemToId('_root')
+        isetItemPathFilter('/child::* except project')
     } else if (id == '_inbox') {
-        itemPathFilter = '//Inbox/descendant-or-self::*'
+        setFocusedItemToId('_inbox')
     } else { // a TaskPaper id of a project
         // Open doc in project
-        itemPathFilter = _getAbsolutePathToId(id) + '/descendant-or-self::*'
+        //itemPathFilter = _getAbsolutePathToId(id) + '/descendant-or-self::*'
+        setFocusedItemToId(id)
     }
-
-    setItemPathFilter(itemPathFilter)
 
 }
 
@@ -138,6 +139,27 @@ function getItemPathFilter() {
     return _evaluateInTP(TPContext, {})
 }
 
+/**
+ * setFocusedItemToId - Set the value in the search field in TaskPaper
+ *
+ * @param  {string} id id of item to focus on or '_root' or '_inbox'
+ */
+function setFocusedItemToId(id) {
+
+    function TPContext(editor, options) {
+        var item
+        if (options.id == '_root') {
+            item = ''
+        } else if (options.id = '_inbox'){
+            item = editor.outline.evaluateItemPath('//Inbox')[0]
+        } else {
+            item = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
+        }
+
+        editor.focusedItem = item
+    }
+    _evaluateInTP(TPContext, {id: id})
+}
 
 /**
  * selectItemAndClearFilter - Shows an item in TaskPaper and clears path filter
@@ -330,21 +352,12 @@ function _getAbsolutePathToId(id) {
 /**
  * getProjectsForScriptFilter - Generate a list of Projects for script filter
  *
- * @return {string}  JSON representation of projects and also '_inbox', '_stack'
+ * @return {string}  JSON representation of projects and also '_stack'
  * and '_all'. The arg field is the TaskPaper id (or one of the specials)
  */
 function getProjectsForScriptFilter() {
 
     projects = _evaluateInTP(_TPGenerateProjectItems, {})
-
-    //TODO: Inbox should show number of items (or indicate it does not exist)
-
-    var inboxItem = {
-        'uid': '_inbox',
-        'title': '* Inbox *',
-        'autocomplete': 'Inbox',
-        'arg': '_inbox',
-    }
 
     var stackItem = {
         'uid': '_stack',
@@ -362,7 +375,7 @@ function getProjectsForScriptFilter() {
         'arg': '_all',
     }
 
-    items = [inboxItem, stackItem, allItem];
+    items = [stackItem, allItem];
     items.push(...projects);
     return JSON.stringify({ "items": items})
 }
