@@ -341,31 +341,25 @@ function getProjectsForScriptFilter() {
 
     var inboxItem = {
         'uid': '_inbox',
-        'title': '* Inbox',
+        'title': '* Inbox *',
+        'autocomplete': 'Inbox',
         'arg': '_inbox',
-        'icon': {
-            'path': 'taskpapericon.png'
-        }
     }
 
     var stackItem = {
         'uid': '_stack',
-        'title': '* Stack',
+        'title': '* Stack *',
         'subtitle': '? items',
+        'autocomplete': 'Stack',
         'arg': '_stack',
-        'icon': {
-            'path': 'taskpapericon.png'
-        }
     }
 
     var allItem = {
         'uid': '_all',
-        'title': '* Show all',
+        'title': '* All *',
         'subtitle': projects.length + ' items',
+        'autocomplete' : 'All',
         'arg': '_all',
-        'icon': {
-            'path': 'taskpapericon.png'
-        }
     }
 
     items = [inboxItem, stackItem, allItem];
@@ -416,9 +410,6 @@ function getUsedTagsForScriptFilter() {
             'autocomplete': tagname,
             'subtitle': appendedSubtitle,
             'arg': appendedSearch,
-            'icon': {
-                'path': 'taskpapericon.png'
-            },
             "mods": {
                 "cmd": {
                     "arg": search,
@@ -498,13 +489,6 @@ function _TPGenerateProjectItems(editor, options) {
             'autocomplete': item.bodyString,
             'subtitle': item.children.length + ' items',
             'arg': item.id,
-            'icon': {
-                'path': 'taskpapericon.png'
-            },
-            'text': {
-                'copy': repr,
-                'largetype': repr
-            }
         }
     })
 }
@@ -529,10 +513,6 @@ function _TPGetSavedSearches(editor, options) {
             'autocomplete': item.bodyContentString,
             'subtitle': item.getAttribute('data-search'),
             'arg': item.getAttribute('data-search'),
-            'icon': {
-                'path': 'taskpapericon.png'
-            },
-
         }
     })
 }
@@ -558,9 +538,6 @@ function scriptFilterSearch(query) {
                 'autocomplete': item.bodyString,
                 'subtitle': path.join('/') + ' (' + datatype + ')',
                 'arg': item.id,
-                'icon': {
-                    'path': 'taskpapericon.png'
-                },
             }
         })
     }
@@ -575,29 +552,26 @@ function scriptFilterRemindSetting() {
     var items = []
 
     items.push({
-        'title': '-- Leave unchanged',
+        'title': '* Leave unchanged *',
+        'autocomplete': 'Leave unchanged',
         'subtitle': getRemindSearchString(),
         'arg': getRemindSearchString(),
-        'icon': {
-            'path': 'taskpapericon.png'
-        },
     })
+
     var currentValueInTP = getItemPathFilter()
     items.push({
-        'title': '-- Select current filter from TaskPaper',
+        'title': '* Select current filter from TaskPaper *',
+        'autocomplete': 'Select current filter from TaskPaper',
         'subtitle': currentValueInTP,
         'arg': currentValueInTP,
-        'icon': {
-            'path': 'taskpapericon.png'
-        },
+
     })
 
     items.push({
-        'title': '-- Disable remind popup (nagging can be good though)',
+        'title': '* Disable remind popup *',
+        'autocomplete': 'Disable',
+        'subtitle': '(nagging can be good though)',
         'arg': '_remind_disabled',
-        'icon': {
-            'path': 'taskpapericon.png'
-        },
     })
 
     savedSearchItems = _evaluateInTP(_TPGetSavedSearches, {})
