@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.github.robwalton.taskpaper-alfred-workflow</string>
-	<key>category</key>
-	<string>Used</string>
 	<key>connections</key>
 	<dict>
 		<key>004EEC6E-D9C8-422B-B7B9-74668DEAFBCB</key>
@@ -447,11 +445,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>956213C5-D082-4EAF-BE40-342DED047651</key>
+		<key>932E7352-1BFF-47C3-AAC0-7C0D6EEC2377</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D2A5C3BB-9AA2-4D13-81FF-2381B74D0793</string>
+				<string>535AF857-C96B-4B3E-8A91-B639A9C17A74</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -460,11 +458,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>9A33B302-504B-4DF0-9875-C70BB34D06CC</key>
+		<key>956213C5-D082-4EAF-BE40-342DED047651</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>535AF857-C96B-4B3E-8A91-B639A9C17A74</string>
+				<string>D2A5C3BB-9AA2-4D13-81FF-2381B74D0793</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -816,6 +814,74 @@ sys.stdout.write(msg)</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>d:setdoc</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for {query} (d:setdoc)</string>
+				<key>script</key>
+				<string># A normal file filter seems never show results until you start typing. Here is a hand rolled one.
+
+from subprocess import check_output
+import os
+import sys
+import json
+
+find_cmd = "mdfind \"kMDItemContentType == 'com.taskpaper.text'\""
+path_list = check_output(find_cmd, shell=True).split('\n')
+
+items = []
+for path in path_list:
+    if '/Library/Application Support/TaskPaper/Configurations/' in path:
+        continue
+
+    items.append({        
+        'uid': path,
+        'title': os.path.basename(path).split('.')[0],
+        'subtitle': path,
+        'arg': path,
+        'icon': {
+            'path': 'icon.png'
+        }
+    })
+
+sys.stdout.write(json.dumps({'items': items}))</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Choose a TaskPaper document to work on (d:setdoc)</string>
+				<key>title</key>
+				<string>Set TaskPaper Document</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>932E7352-1BFF-47C3-AAC0-7C0D6EEC2377</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -856,80 +922,6 @@ echo $1</string>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>A92D33FC-10A3-459B-9B62-3B79E20F094B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>anchorfields</key>
-				<true/>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>daterange</key>
-				<integer>0</integer>
-				<key>fields</key>
-				<array>
-					<dict>
-						<key>field</key>
-						<string>kMDItemDisplayName</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<true/>
-						<key>value</key>
-						<string>{query}</string>
-						<key>words</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>field</key>
-						<string>kMDItemAlternateNames</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<true/>
-						<key>value</key>
-						<string>{query}</string>
-						<key>words</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>field</key>
-						<string>kMDItemFinderComment</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<true/>
-						<key>value</key>
-						<string>{query}</string>
-						<key>words</key>
-						<true/>
-					</dict>
-				</array>
-				<key>includesystem</key>
-				<false/>
-				<key>keyword</key>
-				<string>d:setdoc</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>scopes</key>
-				<array/>
-				<key>subtext</key>
-				<string>Searching for {query} (d:setdoc)</string>
-				<key>title</key>
-				<string>Set TaskPaper Document</string>
-				<key>types</key>
-				<array>
-					<string>com.taskpaper.text</string>
-				</array>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.filefilter</string>
-			<key>uid</key>
-			<string>9A33B302-504B-4DF0-9875-C70BB34D06CC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1009,7 +1001,7 @@ echo $1</string>
 				<key>scriptfile</key>
 				<string>todo_scriptfilter</string>
 				<key>subtext</key>
-				<string>Select saved search to pop up when 'do' called with no args (d:setremind)</string>
+				<string>Select saved search to pop up when 'do' called with no args</string>
 				<key>title</key>
 				<string>Set Remind Search</string>
 				<key>type</key>
@@ -2219,7 +2211,7 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>See packal.org/workflow/taskpaper for full instructions
+	<string>See packal.org for full instructions
 
 # Keywords #
 
@@ -2229,12 +2221,12 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 
 - do			open the workflow’s TaskPaper document
 - do &lt;task&gt;	create a new task
-- domail		create tasks from emails selected in Apple’s Mail app
+- domail		create tasks from emails selected in Apple’s Mail app.
 
-- dos		search for and then select a project, task or note
+- dos		search for and then select a projects, task or note
 - dop		search for and then focus on a project
 - doss		select and apply a search saved from the document
-- dot		search for and then append a tag to any current search Use the modifier _cmd_ to instead clear the search before appending the tag
+- dot		search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
 
 - dopr		open resources associated with a project or to add a folder or alias resource if none exist.
 
@@ -2608,6 +2600,15 @@ activateTaskPaper()</string>
 			<key>ypos</key>
 			<integer>300</integer>
 		</dict>
+		<key>932E7352-1BFF-47C3-AAC0-7C0D6EEC2377</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>xpos</key>
+			<integer>20</integer>
+			<key>ypos</key>
+			<integer>150</integer>
+		</dict>
 		<key>956213C5-D082-4EAF-BE40-342DED047651</key>
 		<dict>
 			<key>colorindex</key>
@@ -2618,15 +2619,6 @@ activateTaskPaper()</string>
 			<integer>200</integer>
 			<key>ypos</key>
 			<integer>490</integer>
-		</dict>
-		<key>9A33B302-504B-4DF0-9875-C70BB34D06CC</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>2</integer>
-			<key>xpos</key>
-			<integer>20</integer>
-			<key>ypos</key>
-			<integer>150</integer>
 		</dict>
 		<key>A4B06632-01C9-4624-9BA0-2BE87D427043</key>
 		<dict>
