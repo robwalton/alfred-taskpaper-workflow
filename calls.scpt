@@ -7,17 +7,29 @@
 // the same boiler plate code, all code is in here. The single run function
 // calls a named function with args.
 
+
 // Known issues and new features
-// MUST
-// - dos does not select item if selection is in sidebar
-// - domail creates an empty entry if Mail app not open - warn
+//
 // SHOULD
 // - should not automatically make the resource dir folder
+// - domail creates an empty entry if Mail app not open - warn
 // COULD
 // - domail could work Outlook too
 // - work with an alias for the resource dir
 // - have a method to set resourcedir, would need to be persisted for each doc
 // - have a way to add additional resources to a project
+
+
+// Versions
+//
+// 0.9
+// - Initial public release
+//
+// 0.9.1
+// - Add autocomplete and fix icon for script filters
+// - Improve d;setdoc Alfred filter so it now shows all TP docs *before* typeing
+// - Fix help to work when no workflow document has been configured
+// - Improve dop command to focus on projects properly
 
 ObjC.import('stdlib');
 ObjC.import('Foundation');
@@ -98,7 +110,7 @@ function showProject(id) {
     } else if (id == '_stack') {
         // Open scratch items
         setFocusedItemToId('_root')
-        isetItemPathFilter('/child::* except project')
+        setItemPathFilter('/child::* except project')
     } else if (id == '_inbox') {
         setFocusedItemToId('_inbox')
     } else { // a TaskPaper id of a project
