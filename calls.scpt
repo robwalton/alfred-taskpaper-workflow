@@ -30,6 +30,7 @@
 // - Improve d;setdoc Alfred filter so it now shows all TP docs *before* typeing
 // - Fix help to work when no workflow document has been configured
 // - Improve dop command to focus on projects properly
+// - Make search show all results before user starts typing
 
 ObjC.import('stdlib');
 ObjC.import('Foundation');
@@ -566,7 +567,9 @@ function scriptFilterSearch(query) {
             }
         })
     }
-
+    if (query == '') {
+        query = '*'
+    }
     items = _evaluateInTP(TPQuery, {query: query})
     return JSON.stringify({"items": items})
 
