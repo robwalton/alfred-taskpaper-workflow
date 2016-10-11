@@ -1103,7 +1103,8 @@ echo $1</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>./calls.scpt "selectItemAndClearFilter" "$1"</string>
+				<string>./calls.scpt "showProject" "_all"
+./calls.scpt "selectItemAndClearFilter" "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -2379,7 +2380,8 @@ setItemPathFilter(query)</string>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>note</key>
-			<string>selectItemAndClearFilter(id)</string>
+			<string>showProject('_all')
+selectItemAndClearFilter(id)</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>

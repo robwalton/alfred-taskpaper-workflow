@@ -13,11 +13,13 @@
 // SHOULD
 // - should not automatically make the resource dir folder
 // - domail creates an empty entry if Mail app not open - warn
+// - search does not seect item if something in the sidbar is selected when run
 // COULD
 // - domail could work Outlook too
 // - work with an alias for the resource dir
 // - have a method to set resourcedir, would need to be persisted for each doc
 // - have a way to add additional resources to a project
+// - opening a directory as a project resource should bring the Finder window forward
 
 
 // Versions
@@ -26,11 +28,12 @@
 // - Initial public release
 //
 // 0.9.1
-// - Add autocomplete and fix icon for script filters
-// - Improve d;setdoc Alfred filter so it now shows all TP docs *before* typeing
-// - Fix help to work when no workflow document has been configured
-// - Improve dop command to focus on projects properly
-// - Make search show all results before user starts typing
+// - Fix help command to work when no workflow document has been configured
+// - Improve d:setdoc command so that it now shows all TP docs *before* typeing
+// - Improve dop command to focus on projects properly in all cases
+// - Improve search command to now show all items before user starts typing
+// - Add autocomplete to script filters and fix icon references
+
 
 ObjC.import('stdlib');
 ObjC.import('Foundation');
