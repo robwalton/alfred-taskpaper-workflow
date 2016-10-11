@@ -648,6 +648,13 @@ function getRemindSearchMaxItems() {
 function getSettingsSummary() {
 
     var remindMsg
+
+    // If no document configured then show a simplified summary
+    docPath = _getSettings().getitem('tpdocument')
+    if (docPath == undefined) {
+        return "!! No document configured for workflow --- configure with 't:setdoc'"
+    }
+
     var rs = getRemindSearchString()
     if (!_isRemindSearchConfigured()) {
         remindMsg = "defaulting to '" + rs + "'"
