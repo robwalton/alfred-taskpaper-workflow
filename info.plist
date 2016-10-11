@@ -19,6 +19,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>09082ED7-9DB2-41EF-AD2B-3E6598F05845</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D2A5C3BB-9AA2-4D13-81FF-2381B74D0793</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>0E70F4EB-B962-4B56-9994-3B7E71394AA4</key>
 		<array>
 			<dict>
@@ -397,7 +410,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3A13B0A7-B4AC-4941-B6E9-4638224C1515</string>
+				<string>09082ED7-9DB2-41EF-AD2B-3E6598F05845</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1090,29 +1103,6 @@ echo $1</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>./calls.scpt "activateTaskPaper"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D2A5C3BB-9AA2-4D13-81FF-2381B74D0793</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
 				<string>./calls.scpt "selectItemAndClearFilter" "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -1134,7 +1124,7 @@ echo $1</string>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>keyword</key>
@@ -1168,6 +1158,53 @@ echo $1</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>60FADFAE-7CDA-4167-B247-C0356814EA27</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>./calls.scpt "activateTaskPaper"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D2A5C3BB-9AA2-4D13-81FF-2381B74D0793</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>./calls.scpt "showProject" "_all"
+./calls.scpt "setItemPathFilter" "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>09082ED7-9DB2-41EF-AD2B-3E6598F05845</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -2245,6 +2282,18 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 			<key>ypos</key>
 			<integer>20</integer>
 		</dict>
+		<key>09082ED7-9DB2-41EF-AD2B-3E6598F05845</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
+			<key>note</key>
+			<string>showProject('_all')
+setItemPathFilter(query)</string>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>790</integer>
+		</dict>
 		<key>0E70F4EB-B962-4B56-9994-3B7E71394AA4</key>
 		<dict>
 			<key>colorindex</key>
@@ -2388,7 +2437,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>860</integer>
+			<integer>920</integer>
 		</dict>
 		<key>423D719D-5810-4958-875E-762ED9AF771F</key>
 		<dict>
@@ -2716,7 +2765,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>600</integer>
 			<key>ypos</key>
-			<integer>640</integer>
+			<integer>720</integer>
 		</dict>
 		<key>DC38468F-B0C1-4100-8BF3-491E6E80EA3C</key>
 		<dict>
@@ -2840,10 +2889,10 @@ activateTaskPaper()</string>
 	<key>variables</key>
 	<dict>
 		<key>SemVer</key>
-		<string>.9</string>
+		<string>.9.1</string>
 	</dict>
 	<key>version</key>
-	<string>.9</string>
+	<string>.9.1</string>
 	<key>webaddress</key>
 	<string>github.com/robwalton/taskpaper-alfred-workflow</string>
 </dict>
