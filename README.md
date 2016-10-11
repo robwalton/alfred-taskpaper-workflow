@@ -3,7 +3,7 @@
 [Alfred 3 workflow](https://www.alfredapp.com/workflows/) to search and create tasks in [TaskPaper 3](https://www.taskpaper.com).
 
 ## Install
-To install, download [TaskPaper.alfredworkflow](TaskPaper.alfredworkflow) and double-click to open in Alfred 2. Alternatively, download what should be the same file hosted on [Packal](http://www.packal.org/workflow/taskpaper). There is [discusion thread](http://support.hogbaysoftware.com/t/alfred-2-workflow-for-taskpaper-3/2481) on the TaskPaper fourm.
+To install, download [TaskPaper.alfredworkflow](TaskPaper.alfredworkflow) and double-click to open in Alfred 2. Alternatively, download what should be the same file hosted on [Packal](http://www.packal.org/workflow/taskpaper). There are discussion threads on the [TaskPaper forum](http://support.hogbaysoftware.com/t/alfred-2-workflow-for-taskpaper-3/2481) and [Alfred forum](http://www.alfredforum.com/topic/9605-taskpaper3-workflow-for-alfred/).
 
 ## Configure document and get help
 Use the keywords:
@@ -19,7 +19,7 @@ Use the modifiers:
 - _cmd-return_ to view the Inbox
 - _shift-return_ to view the Stack (see below)
 
-The **do** command, along with opening the configured workflow document, will also pop up the results of the _reminder search_in front of the document. This can be configured using the keyword:
+The **do** command, along with opening the configured workflow document, will also pop up the results of the _reminder search_ in front of the document. This can be configured using the keyword:
 - **d:setremind** to view, change or disable the reminder search
 
 ## Create tasks
@@ -51,6 +51,17 @@ Projects may have external resources associated with them. These may be files, f
 Use the keyword:
 
 - **dopr** to open resources associated with a project or to add a folder or alias resource if none exist.
+
+## Versions
+**0.9**
+- Initial public release
+
+**0.9.1**
+- Fix help command to work when no workflow document has been configured
+- Improve d:setdoc command so that it now shows all TP docs *before* typeing
+- Improve dop command to focus on projects properly in all cases
+- Improve search command to now show all items before user starts typing
+- Add autocomplete to script filters and fix icon references
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow
