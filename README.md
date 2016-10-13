@@ -34,10 +34,15 @@ Use the modifiers:
 
 ## Search document
 Use the keywords:
-- **dos** to search for and then select a projects, task or note.
--  **dop** to search for and then focus on a project.
+- **dos** to search for item and select
+- **dop** to search for and then focus on a project.
 - **doss** to select and apply a search saved from the document.
 - **dot** to search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
+
+Use the modifiers on *dos* (search):
+- _return_ to select the item in TaskPaper
+- _cmd-return_ to toggle the @done tag
+- _cmd-shift_ to toggle the @today tag
 
 ## The Inbox and the Stack
 The workflow operates on two special locations:
@@ -65,5 +70,3 @@ Use the keyword:
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow
-
-

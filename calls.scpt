@@ -36,6 +36,7 @@
 // 0.9.2
 // - Fix dop command broken in previous release
 // - Disable the remind screen feature by default
+// - Add feature to toggle the @done or @today tag via the dos [search] command
 
 
 ObjC.import('stdlib');
@@ -178,6 +179,38 @@ function setFocusedItemToId(id) {
         editor.focusedItem = item
     }
     _evaluateInTP(TPContext, {id: id})
+}
+
+function toggleTag(id, tagName) {
+
+    function TPContext(editor, options) {
+        var tagName = options.tagName
+        var attribute = 'data-' + options.tagName
+
+        var item = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
+        var actionPerformed
+        if (item.hasAttribute(attribute)) {
+            item.removeAttribute(attribute, null)
+            actionPerformed = 'Removed tag @' + tagName + ' from'
+        } else if (tagName == 'done') {
+            value = DateTime.format('this day')
+            item.setAttribute(attribute, value)
+            actionPerformed = 'Tagged @done(' + value + ')'
+        } else {
+            item.setAttribute(attribute, '')
+            actionPerformed = 'Tagged @' + tagName
+        }
+        return JSON.stringify({
+            "alfredworkflow": {
+                "variables": {
+                    "actionPerformed": actionPerformed,
+                    "item": item.bodyContentString
+                }
+            }
+        })
+    }
+
+    return _evaluateInTP(TPContext, {id: id, tagName: tagName})
 }
 
 /**

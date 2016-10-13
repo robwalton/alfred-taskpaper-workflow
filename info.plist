@@ -332,7 +332,40 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>E1254A64-C987-4ADF-B816-EF6609C1EA51</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Toggle @today tag</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A78D51A8-4F40-4CF0-A3D5-CCC1F34B27DC</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Toggle @done tag</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>27844699-3B1F-4E94-A055-A5822DD4DB0D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>63DAD914-D3FE-4AFC-AD35-58062C831146</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F6DE6450-4E2A-4F5E-8956-B9190B6E8E89</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -497,6 +530,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A78D51A8-4F40-4CF0-A3D5-CCC1F34B27DC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>63DAD914-D3FE-4AFC-AD35-58062C831146</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>AE6684AD-B8C7-43E1-84DB-D31C6148699F</key>
 		<array>
 			<dict>
@@ -602,6 +648,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>3A13B0A7-B4AC-4941-B6E9-4638224C1515</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E1254A64-C987-4ADF-B816-EF6609C1EA51</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>63DAD914-D3FE-4AFC-AD35-58062C831146</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1032,45 +1091,20 @@ echo $1</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>keyword</key>
-				<string>dop</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for project {query}</string>
-				<key>script</key>
-				<string>./calls.scpt "getProjectsForScriptFilter"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>todo_scriptfilter</string>
-				<key>subtext</key>
-				<string>Search for and then focus on a project (dop)</string>
-				<key>title</key>
-				<string>Focus on Project</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>tagname</key>
+					<string>today</string>
+				</dict>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>0E70F4EB-B962-4B56-9994-3B7E71394AA4</string>
+			<string>E1254A64-C987-4ADF-B816-EF6609C1EA51</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1080,7 +1114,7 @@ echo $1</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>./calls.scpt "showProject" "$1"</string>
+				<string>./calls.scpt "toggleTag" "$1" "$tagname"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -1091,9 +1125,48 @@ echo $1</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>956213C5-D082-4EAF-BE40-342DED047651</string>
+			<string>63DAD914-D3FE-4AFC-AD35-58062C831146</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:item}</string>
+				<key>title</key>
+				<string>{var:actionPerformed}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>F6DE6450-4E2A-4F5E-8956-B9190B6E8E89</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>tagname</key>
+					<string>done</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>A78D51A8-4F40-4CF0-A3D5-CCC1F34B27DC</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1159,6 +1232,72 @@ echo $1</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>60FADFAE-7CDA-4167-B247-C0356814EA27</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>dop</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for project {query}</string>
+				<key>script</key>
+				<string>./calls.scpt "getProjectsForScriptFilter"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>todo_scriptfilter</string>
+				<key>subtext</key>
+				<string>Search for and then focus on a project (dop)</string>
+				<key>title</key>
+				<string>Focus on Project</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0E70F4EB-B962-4B56-9994-3B7E71394AA4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>./calls.scpt "showProject" "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>956213C5-D082-4EAF-BE40-342DED047651</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -2261,7 +2400,7 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 - do &lt;task&gt;	create a new task
 - domail		create tasks from emails selected in Apple’s Mail app.
 
-- dos		search for and then select a projects, task or note
+- dos		search for and then select an item. Use modifiers _cmd_ to toggle @done and _shift_ to toggle @today
 - dop		search for and then focus on a project
 - doss		select and apply a search saved from the document
 - dot		search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
@@ -2293,7 +2432,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>790</integer>
+			<integer>930</integer>
 		</dict>
 		<key>0E70F4EB-B962-4B56-9994-3B7E71394AA4</key>
 		<dict>
@@ -2304,7 +2443,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>490</integer>
+			<integer>780</integer>
 		</dict>
 		<key>10E8B722-5183-40B1-BE68-91B213C734D9</key>
 		<dict>
@@ -2313,7 +2452,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>830</integer>
 			<key>ypos</key>
-			<integer>2290</integer>
+			<integer>2430</integer>
 		</dict>
 		<key>133C8D33-14D6-4EC7-9DA0-C44AAA197662</key>
 		<dict>
@@ -2333,7 +2472,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>690</integer>
 			<key>ypos</key>
-			<integer>2440</integer>
+			<integer>2580</integer>
 		</dict>
 		<key>1960B98A-C045-4E90-965C-A9828069FFC6</key>
 		<dict>
@@ -2344,7 +2483,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>790</integer>
 			<key>ypos</key>
-			<integer>1430</integer>
+			<integer>1570</integer>
 		</dict>
 		<key>1DF3915A-74B5-4008-9C3C-1274BCCBD8CD</key>
 		<dict>
@@ -2353,7 +2492,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>1010</integer>
 			<key>ypos</key>
-			<integer>1430</integer>
+			<integer>1570</integer>
 		</dict>
 		<key>1E164D7D-70FA-4EEE-A05B-2F5EDCB4BCD3</key>
 		<dict>
@@ -2364,7 +2503,7 @@ setItemPathFilter(query)</string>
 			<key>xpos</key>
 			<integer>550</integer>
 			<key>ypos</key>
-			<integer>2130</integer>
+			<integer>2270</integer>
 		</dict>
 		<key>1FA4C6C9-7E0A-40CC-8FF7-3DF838197AD6</key>
 		<dict>
@@ -2385,7 +2524,7 @@ selectItemAndClearFilter(id)</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>640</integer>
+			<integer>610</integer>
 		</dict>
 		<key>2B9CB7CD-5D41-4484-A957-8330BE79E709</key>
 		<dict>
@@ -2396,7 +2535,7 @@ selectItemAndClearFilter(id)</string>
 			<key>xpos</key>
 			<integer>400</integer>
 			<key>ypos</key>
-			<integer>2100</integer>
+			<integer>2240</integer>
 		</dict>
 		<key>30FE13DC-76FC-43B0-A36A-0EA152BF3D80</key>
 		<dict>
@@ -2407,7 +2546,7 @@ selectItemAndClearFilter(id)</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>1410</integer>
+			<integer>1550</integer>
 		</dict>
 		<key>318F8467-C8D2-44BF-A93B-36EFD2264DDD</key>
 		<dict>
@@ -2416,7 +2555,7 @@ selectItemAndClearFilter(id)</string>
 			<key>xpos</key>
 			<integer>10</integer>
 			<key>ypos</key>
-			<integer>1680</integer>
+			<integer>1820</integer>
 		</dict>
 		<key>39F73B2A-20FD-4367-9BDB-65D08EC87014</key>
 		<dict>
@@ -2428,7 +2567,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>420</integer>
 			<key>ypos</key>
-			<integer>1080</integer>
+			<integer>1220</integer>
 		</dict>
 		<key>3A13B0A7-B4AC-4941-B6E9-4638224C1515</key>
 		<dict>
@@ -2439,7 +2578,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1060</integer>
 		</dict>
 		<key>423D719D-5810-4958-875E-762ED9AF771F</key>
 		<dict>
@@ -2450,7 +2589,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>450</integer>
 			<key>ypos</key>
-			<integer>1680</integer>
+			<integer>1820</integer>
 		</dict>
 		<key>4741D397-F1AC-45AD-AA5C-B37ACB1A40F6</key>
 		<dict>
@@ -2461,7 +2600,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>570</integer>
 			<key>ypos</key>
-			<integer>1080</integer>
+			<integer>1220</integer>
 		</dict>
 		<key>49F2DFD1-DDF0-4E92-8290-C4AB826B8194</key>
 		<dict>
@@ -2490,7 +2629,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>10</integer>
 			<key>ypos</key>
-			<integer>1290</integer>
+			<integer>1430</integer>
 		</dict>
 		<key>55F895C9-8FCF-4830-9648-723B9220FEFC</key>
 		<dict>
@@ -2499,7 +2638,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>720</integer>
 			<key>ypos</key>
-			<integer>1080</integer>
+			<integer>1220</integer>
 		</dict>
 		<key>5D6BB3D2-521B-4855-A81D-C7C2B5E05187</key>
 		<dict>
@@ -2510,7 +2649,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>1320</integer>
+			<integer>1460</integer>
 		</dict>
 		<key>5E33E9C9-CC54-4E40-89E6-9B8F5025D857</key>
 		<dict>
@@ -2519,7 +2658,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>830</integer>
 			<key>ypos</key>
-			<integer>2440</integer>
+			<integer>2580</integer>
 		</dict>
 		<key>5EABEB94-8BF5-4AD0-AB65-E5EDC6DEC0C1</key>
 		<dict>
@@ -2530,7 +2669,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>170</integer>
 			<key>ypos</key>
-			<integer>1760</integer>
+			<integer>1900</integer>
 		</dict>
 		<key>5F32DFA6-62F2-482E-A742-EDBF467FEC65</key>
 		<dict>
@@ -2541,7 +2680,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>340</integer>
 			<key>ypos</key>
-			<integer>1630</integer>
+			<integer>1770</integer>
 		</dict>
 		<key>60FADFAE-7CDA-4167-B247-C0356814EA27</key>
 		<dict>
@@ -2552,7 +2691,18 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>640</integer>
+			<integer>610</integer>
+		</dict>
+		<key>63DAD914-D3FE-4AFC-AD35-58062C831146</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>toggleTag(id, tagname)</string>
+			<key>xpos</key>
+			<integer>390</integer>
+			<key>ypos</key>
+			<integer>460</integer>
 		</dict>
 		<key>699B2770-696B-45D9-9AF1-0039E179C798</key>
 		<dict>
@@ -2563,7 +2713,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>340</integer>
 			<key>ypos</key>
-			<integer>1790</integer>
+			<integer>1930</integer>
 		</dict>
 		<key>6D10D99C-A9C3-4B91-A707-BF7ECE15CF35</key>
 		<dict>
@@ -2574,7 +2724,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>340</integer>
 			<key>ypos</key>
-			<integer>1460</integer>
+			<integer>1600</integer>
 		</dict>
 		<key>7497CA6D-3966-449E-970D-B293AF21AA8B</key>
 		<dict>
@@ -2585,7 +2735,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2130</integer>
+			<integer>2270</integer>
 		</dict>
 		<key>786712BC-BC04-49FF-9CE5-682416006988</key>
 		<dict>
@@ -2596,7 +2746,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>530</integer>
 			<key>ypos</key>
-			<integer>1330</integer>
+			<integer>1470</integer>
 		</dict>
 		<key>7F097DC4-DB48-45B1-849D-A1B1C9533CD5</key>
 		<dict>
@@ -2607,7 +2757,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>540</integer>
 			<key>ypos</key>
-			<integer>2290</integer>
+			<integer>2430</integer>
 		</dict>
 		<key>825B09EC-3A42-43B9-B19E-71E4D35DFE2D</key>
 		<dict>
@@ -2616,7 +2766,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>790</integer>
+			<integer>930</integer>
 		</dict>
 		<key>885B0A43-7AAD-4C2C-9046-349AEA13161E</key>
 		<dict>
@@ -2627,7 +2777,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>680</integer>
 			<key>ypos</key>
-			<integer>1710</integer>
+			<integer>1850</integer>
 		</dict>
 		<key>88B7ABCD-6D03-4C84-B61A-873D18C9A111</key>
 		<dict>
@@ -2638,7 +2788,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>450</integer>
 			<key>ypos</key>
-			<integer>1360</integer>
+			<integer>1500</integer>
 		</dict>
 		<key>8A5860BE-095F-40A9-90F1-530ED50721FD</key>
 		<dict>
@@ -2669,7 +2819,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>490</integer>
+			<integer>780</integer>
 		</dict>
 		<key>A4B06632-01C9-4624-9BA0-2BE87D427043</key>
 		<dict>
@@ -2681,7 +2831,18 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>210</integer>
 			<key>ypos</key>
-			<integer>1980</integer>
+			<integer>2120</integer>
+		</dict>
+		<key>A78D51A8-4F40-4CF0-A3D5-CCC1F34B27DC</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>tagname = done</string>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>530</integer>
 		</dict>
 		<key>A92D33FC-10A3-459B-9B62-3B79E20F094B</key>
 		<dict>
@@ -2701,7 +2862,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>350</integer>
 			<key>ypos</key>
-			<integer>1110</integer>
+			<integer>1250</integer>
 		</dict>
 		<key>B72C1B99-C615-498D-9983-8CF9D23FBB71</key>
 		<dict>
@@ -2712,7 +2873,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>1950</integer>
+			<integer>2090</integer>
 		</dict>
 		<key>BA75D506-78B7-442A-A067-22E8AEC730BF</key>
 		<dict>
@@ -2723,7 +2884,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>200</integer>
 			<key>ypos</key>
-			<integer>1230</integer>
+			<integer>1370</integer>
 		</dict>
 		<key>CA2D8254-C9F5-4B7D-9B0F-AB63A492B0C1</key>
 		<dict>
@@ -2734,7 +2895,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>350</integer>
 			<key>ypos</key>
-			<integer>2470</integer>
+			<integer>2610</integer>
 		</dict>
 		<key>CB16F3CE-28F1-48B2-81A0-3067D90DCBBF</key>
 		<dict>
@@ -2745,7 +2906,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>940</integer>
 			<key>ypos</key>
-			<integer>1460</integer>
+			<integer>1600</integer>
 		</dict>
 		<key>D1402E52-AC13-4542-88C2-6CC308424225</key>
 		<dict>
@@ -2756,7 +2917,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>690</integer>
 			<key>ypos</key>
-			<integer>1360</integer>
+			<integer>1500</integer>
 		</dict>
 		<key>D2A5C3BB-9AA2-4D13-81FF-2381B74D0793</key>
 		<dict>
@@ -2767,7 +2928,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>600</integer>
 			<key>ypos</key>
-			<integer>720</integer>
+			<integer>860</integer>
 		</dict>
 		<key>DC38468F-B0C1-4100-8BF3-491E6E80EA3C</key>
 		<dict>
@@ -2776,7 +2937,18 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>20</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1060</integer>
+		</dict>
+		<key>E1254A64-C987-4ADF-B816-EF6609C1EA51</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>tagname = today</string>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>440</integer>
 		</dict>
 		<key>E71E81B8-D1D6-4E97-AEBA-2107751E523A</key>
 		<dict>
@@ -2787,7 +2959,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>320</integer>
 			<key>ypos</key>
-			<integer>1950</integer>
+			<integer>2090</integer>
 		</dict>
 		<key>E96CD3FC-BD62-4B9A-A580-FF3186846370</key>
 		<dict>
@@ -2809,7 +2981,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>340</integer>
 			<key>ypos</key>
-			<integer>1710</integer>
+			<integer>1850</integer>
 		</dict>
 		<key>EF57601A-60C4-4589-9D02-F8D684DB7034</key>
 		<dict>
@@ -2820,7 +2992,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>690</integer>
 			<key>ypos</key>
-			<integer>2290</integer>
+			<integer>2430</integer>
 		</dict>
 		<key>F010ED4B-A283-41C1-A935-E9ECB74FEE99</key>
 		<dict>
@@ -2831,7 +3003,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>450</integer>
 			<key>ypos</key>
-			<integer>1460</integer>
+			<integer>1600</integer>
 		</dict>
 		<key>F607B16C-DE0B-4396-9A48-794618F525DB</key>
 		<dict>
@@ -2842,7 +3014,19 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>450</integer>
 			<key>ypos</key>
-			<integer>2320</integer>
+			<integer>2460</integer>
+		</dict>
+		<key>F6DE6450-4E2A-4F5E-8956-B9190B6E8E89</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>{var:actionPerformed}
+{var:item}</string>
+			<key>xpos</key>
+			<integer>570</integer>
+			<key>ypos</key>
+			<integer>460</integer>
 		</dict>
 		<key>F81FA216-DA2B-4E91-9C89-024D0DFF3637</key>
 		<dict>
@@ -2853,7 +3037,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>350</integer>
 			<key>ypos</key>
-			<integer>2320</integer>
+			<integer>2460</integer>
 		</dict>
 		<key>FC40E18F-99D5-4C4C-9CCD-DB410CB0C2F0</key>
 		<dict>
@@ -2864,7 +3048,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>340</integer>
 			<key>ypos</key>
-			<integer>1360</integer>
+			<integer>1500</integer>
 		</dict>
 		<key>FF1C5C02-6F7A-4E9D-A45E-939E7276B8DA</key>
 		<dict>
@@ -2876,7 +3060,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>210</integer>
 			<key>ypos</key>
-			<integer>2130</integer>
+			<integer>2270</integer>
 		</dict>
 		<key>FFCED66B-3096-4FA5-872A-4D578B34435D</key>
 		<dict>
@@ -2885,7 +3069,7 @@ activateTaskPaper()</string>
 			<key>xpos</key>
 			<integer>180</integer>
 			<key>ypos</key>
-			<integer>2360</integer>
+			<integer>2500</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
