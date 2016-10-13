@@ -35,6 +35,7 @@
 // - Add autocomplete to script filters and fix icon references
 // 0.9.2
 // - Fix dop command broken in previous release
+// - Disable the remind screen feature by default
 
 
 ObjC.import('stdlib');
@@ -663,7 +664,7 @@ function setRemindSearchString(s) {
 }
 
 function getRemindSearchString() {
-    return _getSettings().getitem('remindsearch') || 'not @done'
+    return _getSettings().getitem('remindsearch') || '_remind_disabled'
 }
 
 function _isRemindSearchConfigured() {
