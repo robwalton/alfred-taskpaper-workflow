@@ -39,10 +39,10 @@ Use the keywords:
 - **doss** to select and apply a search saved from the document.
 - **dot** to search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
 
-Use the modifiers on *dos* (search):
+Use the modifiers on **dos** (search):
 - _return_ to select the item in TaskPaper
 - _cmd-return_ to toggle the @done tag
-- _cmd-shift_ to toggle the @today tag
+- _shift-return_ to toggle the @today tag
 
 ## The Inbox and the Stack
 The workflow operates on two special locations:
