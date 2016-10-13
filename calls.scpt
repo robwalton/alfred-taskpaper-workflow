@@ -33,6 +33,8 @@
 // - Improve dop command to focus on projects properly in all cases
 // - Improve search command to now show all items before user starts typing
 // - Add autocomplete to script filters and fix icon references
+// 0.9.2
+// - Fix dop command broken in previous release
 
 
 ObjC.import('stdlib');
@@ -166,7 +168,7 @@ function setFocusedItemToId(id) {
         var item
         if (options.id == '_root') {
             item = ''
-        } else if (options.id = '_inbox'){
+        } else if (options.id == '_inbox'){
             item = editor.outline.evaluateItemPath('//Inbox')[0]
         } else {
             item = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
