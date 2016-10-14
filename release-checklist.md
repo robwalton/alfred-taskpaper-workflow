@@ -1,6 +1,7 @@
 In Alfred:
 - Release notes in calls.scpt?
 - Update 'About this workflow'
+- Check works with ~/Library/Application Support/Alfred 3/Workflow Data/com.github.robwalton.taskpaper-alfred-workflow removed
 - Export workflow from Alfred
 
 Github:
