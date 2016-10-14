@@ -68,5 +68,10 @@ Use the keyword:
 - Improve search command to now show all items before user starts typing
 - Add autocomplete to script filters and fix icon references
 
+**0.9.2**
+- Fix dop (project) command broken in previous release
+- Disable the remind screen feature by default
+- Add feature to toggle the @done or @today tag via the dos (search) command
+
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow
