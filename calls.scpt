@@ -760,7 +760,7 @@ function _noDocSetAlert() {
     // Message text not strictly true but in normal use is a good compromise
     app.displayAlert(
         'No TaskPaper document selected for workflow',
-        {message: 'Select document with command: d:setdoc'}
+        {message: "Select document with command: 'd:setdoc' or 'd:choosedoc'"}
     )
 }
 
