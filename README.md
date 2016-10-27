@@ -7,7 +7,8 @@ To install, download [TaskPaper.alfredworkflow](TaskPaper.alfredworkflow) and do
 
 ## Configure document and get help
 Use the keywords:
-- **d:setdoc** to configure the TaskPapar document the workflow will work on. Most commands will prompt for this before they will work.
+- **d:setdoc** to configure the TaskPapar document the workflow will work on. Most commands will prompt for this before they will work
+- **d:choosedoc** to choose the TaskPaper document the workflow will work on via a dialogue box (an alternative to d:setdoc that does not depend on Spotlight to find documents)
 - **d:help** to show a brief summary of commands and settings
 
 ## View document
@@ -72,6 +73,13 @@ Use the keyword:
 - Fix dop (project) command broken in previous release
 - Disable the remind screen feature by default
 - Add feature to toggle the @done or @today tag via the dos (search) command
+
+**0.9.3**
+- d:setdoc now warns if Spotlight finds no TaskPaper files and suggesus d:choosedoc
+- Create new d:choosedoc command to choose a workflow via a dialogue box
+- Cursor now correctly moves from sidebar to editor pain when selecting an item
+- Fix 'do' command with no args to now open workflow doc rather than just bring TP forward
+- domail command warns if Mail app is closed and no longer creates an empty entry
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow
