@@ -13,7 +13,6 @@
 // SHOULD
 // - should not automatically make the resource dir folder
 // - domail creates an empty entry if Mail app not open - warn
-// - search does not seect item if something in the sidbar is selected when run
 // COULD
 // - domail could work Outlook too
 // - work with an alias for the resource dir
@@ -38,10 +37,10 @@
 // - Disable the remind screen feature by default
 // - Add feature to toggle the @done or @today tag via the dos [search] command
 // 0.9.3
-// - Fix 'do' command with no args to open workflow doc
-// - d:setdoc ow warns if Spotlight finds no TaskPaper files
-// - Create new d:choosedoc command to choose a workflow filw via a dialogue box
-
+// - d:setdoc now warns if Spotlight finds no TaskPaper files
+// - Create new d:choosedoc command to choose a workflow via a dialogue box
+// - Cursor now correctly moves from sidebar to editor pain when selecting an item
+// - Fix 'do' command with no args to now open workflow doc rather than just bring TP forward
 
 ObjC.import('stdlib');
 ObjC.import('Foundation');
@@ -178,7 +177,7 @@ function setFocusedItemToId(id) {
         } else if (options.id == '_inbox'){
             item = editor.outline.evaluateItemPath('//Inbox')[0]
         } else {
-            item = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
+            item = editor.outline.getItemForID(options.id)
         }
 
         editor.focusedItem = item
@@ -192,7 +191,7 @@ function toggleTag(id, tagName) {
         var tagName = options.tagName
         var attribute = 'data-' + options.tagName
 
-        var item = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
+        var item = editor.outline.getItemForID(options.id)
         var actionPerformed
         if (item.hasAttribute(attribute)) {
             item.removeAttribute(attribute, null)
@@ -226,10 +225,11 @@ function toggleTag(id, tagName) {
 function selectItemAndClearFilter(id) {
 
     function TPContext(editor, options) {
+        var item = editor.outline.getItemForID(options.id)
         editor.itemPathFilter = ''
-        var item = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
         editor.forceDisplayed(item, true)
         editor.moveSelectionToItems(item)
+        editor.focus()
     }
     _evaluateInTP(TPContext, {id: id})
 }
@@ -255,7 +255,7 @@ function createItemsIn(text, id) {
         var outline = editor.outline;
         //var item = outline.createItem(text)
         var items = ItemSerializer.deserializeItems(options.text, outline, ItemSerializer.TEXTMimeType)
-        var project = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
+        var project = editor.outline.getItemForID(options.id)
         project.appendChildren(items)
     }
 
@@ -385,7 +385,7 @@ function generateRemindersText() {
 function _getAbsolutePathToId(id) {
 
     function TPContext(editor, options) {
-        var project = editor.outline.evaluateItemPath('@id = ' + options.id)[0]
+        var project = editor.outline.getItemForID(options.id)
         path = project.ancestors.splice(1).map(function(a){
             return a.bodyString.replace(':', '');
         });
