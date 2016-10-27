@@ -50,7 +50,10 @@ var WORKFLOW_NAME = 'com.github.robwalton.taskpaper-alfred-workflow'
 var DATA_PATH = $.getenv('HOME') + '/Library/Application Support/Alfred 3/Workflow Data/' + WORKFLOW_NAME
 DEBUG = true  // JXA logs to error so remember to switch off!
 
+// From http://www.charbase.com/block/geometric-shapes
 
+SB = ' \u25a0\t'  // Special bullet
+PB = '  \u25B8\t'  // Project bullet
 /**
  * run - Called by Alfred for every run of this script. Calls a named function
  * from this script with given arguments
@@ -427,16 +430,16 @@ function getProjectsForScriptFilter() {
 
     var stackItem = {
         'uid': '_stack',
-        'title': '* Stack *',
-        'subtitle': '? items',
+        'title': SB + 'Stack',
+        'subtitle': '\t ? items',
         'autocomplete': 'Stack',
         'arg': '_stack',
     }
 
     var allItem = {
         'uid': '_all',
-        'title': '* All *',
-        'subtitle': projects.length + ' items',
+        'title': SB + 'All',
+        'subtitle': '\t ' + projects.length + ' items',
         'autocomplete' : 'All',
         'arg': '_all',
     }
@@ -554,19 +557,25 @@ function countFilteredItemsInTP(itemPath) {
 
 function _TPGenerateProjectItems(editor, options) {
     //debugger;
+    SB = ' \u25a0\t'
     var itemList = editor.outline.evaluateItemPath('@type = project')
     return itemList.map(function(item){
-        repr = item.descendants.map(function(d){
-            return d.bodyString;
-        });
-        repr = repr.join('\n')
-        depth = item.ancestors.length - 1 // The first is birch.js
+
+        var depth = item.ancestors.length - 1 // The first is birch.js
         //debugger
+        if (depth==0) {
+            var prefix = '  \u25B8\t'
+        } else {
+            var prefix = '   '.repeat(depth+1) + '\u25B8   '
+        }
+        if (item.bodyContentString == 'Inbox') {
+            var prefix = SB
+        }
         return {
             'uid': item.id,
-            'title': Array(depth + 1).join('      ') + item.bodyString,
+            'title': prefix + item.bodyContentString,
             'autocomplete': item.bodyString,
-            'subtitle': item.children.length + ' items',
+            'subtitle': '\t ' + item.children.length + ' items',
             'arg': item.id,
         }
     })
@@ -600,22 +609,34 @@ function _TPGetSavedSearches(editor, options) {
 function scriptFilterSearch(query) {
 
     function TPQuery(editor, options) {
-
+        PT = '  -\t'
+        SB = ' \u25a0\t'
         q = options.query
         var itemList = editor.outline.evaluateItemPath(q)
         return itemList.map(function(item){
-            //depth = item.ancestors.length - 1 // The first is birch.js
-            path = item.ancestors.splice(1).map(function(a){
-                return a.bodyString;
-            });
+
             datatype = item.getAttribute('data-type')
-            console.log(item.bodyString + '--' + item.attributes)
+            var title_prefix = '\t'
+            var body = item.bodyString
+            if (datatype.toString() == 'project') {
+                var depth = item.ancestors.length - 1
+                body = item.bodyContentString  // missing the :
+                if (depth==0) {
+                    var title_prefix = '  \u25B8\t'
+                } else {
+                    var title_prefix = '   '.repeat(depth+1) + '\u25B8   '
+                }
+            } else if (datatype.toString() == 'task') {
+                title_prefix = PT
+                body = item.bodyString.substr(2) // remove '- ' from start
+            }
+            if (body == 'Inbox') {
+                title_prefix = SB
+            }
             return {
-                //'title': Array(depth + 1).join('      ') + item.bodyString,
                 'uid': item.id,
-                'title': item.bodyString,
-                'autocomplete': item.bodyString,
-                'subtitle': path.join('/') + ' (' + datatype + ')',
+                'title': title_prefix + body,
+                'autocomplete': body,
                 'arg': item.id,
             }
         })
@@ -633,7 +654,7 @@ function scriptFilterRemindSetting() {
     var items = []
 
     items.push({
-        'title': '* Leave unchanged *',
+        'title': 'Leave unchanged',
         'autocomplete': 'Leave unchanged',
         'subtitle': getRemindSearchString(),
         'arg': getRemindSearchString(),
@@ -641,7 +662,7 @@ function scriptFilterRemindSetting() {
 
     var currentValueInTP = getItemPathFilter()
     items.push({
-        'title': '* Select current filter from TaskPaper *',
+        'title': 'Select current filter from TaskPaper',
         'autocomplete': 'Select current filter from TaskPaper',
         'subtitle': currentValueInTP,
         'arg': currentValueInTP,
@@ -649,7 +670,7 @@ function scriptFilterRemindSetting() {
     })
 
     items.push({
-        'title': '* Disable remind popup *',
+        'title': 'Disable remind popup',
         'autocomplete': 'Disable',
         'subtitle': '(nagging can be good though)',
         'arg': '_remind_disabled',
