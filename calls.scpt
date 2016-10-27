@@ -37,6 +37,10 @@
 // - Fix dop command broken in previous release
 // - Disable the remind screen feature by default
 // - Add feature to toggle the @done or @today tag via the dos [search] command
+// 0.9.3
+// - Fix 'do' command with no args to open workflow doc
+// - d:setdoc ow warns if Spotlight finds no TaskPaper files
+// - Create new d:choosedoc command to choose a workflow filw via a dialogue box
 
 
 ObjC.import('stdlib');
@@ -661,7 +665,7 @@ function _getSettings() {
 
 
 function setDocumentPath(path) {
-    _getSettings().setitem('tpdocument', path)
+    _getSettings().setitem('tpdocument', path.trim())  // some scripts get a newline in
 }
 
 /**
