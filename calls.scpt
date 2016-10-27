@@ -733,7 +733,7 @@ function getSettingsSummary() {
     // If no document configured then show a simplified summary
     docPath = _getSettings().getitem('tpdocument')
     if (docPath == undefined) {
-        return "!! No document configured for workflow --- configure with 'd:setdoc'"
+        return "!! No document configured for workflow --- configure with 'd:setdoc' or 'd:choosedoc'"
     }
 
     var rs = getRemindSearchString()

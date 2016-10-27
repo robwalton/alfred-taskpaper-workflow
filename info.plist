@@ -2515,7 +2515,7 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>See packal.org for full instructions
+	<string>See packal.org/workflow/taskpaper for full instructions
 
 # Keywords #
 
