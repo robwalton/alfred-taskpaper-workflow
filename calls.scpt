@@ -108,6 +108,7 @@ function showProject(id) {
 
     if (id == '_unspecified') {
         // leave the filter as it is
+        Application('TaskPaper').open(getDocumentPath())
         return
     }
 
