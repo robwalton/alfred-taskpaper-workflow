@@ -123,6 +123,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2546BF5E-FFA8-43F7-A425-1546018456D2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>885B0A43-7AAD-4C2C-9046-349AEA13161E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>27844699-3B1F-4E94-A055-A5822DD4DB0D</key>
 		<array>
 			<dict>
@@ -235,7 +248,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>885B0A43-7AAD-4C2C-9046-349AEA13161E</string>
+				<string>2546BF5E-FFA8-43F7-A425-1546018456D2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -908,29 +921,6 @@ sys.stdout.write(msg)</string>
 			<string>004EEC6E-D9C8-422B-B7B9-74668DEAFBCB</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string></string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>243465BD-C285-4E9C-8873-9923CC7888CA</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1989,6 +1979,26 @@ echo $1</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>1</integer>
+				<key>matchstring</key>
+				<string>_no_selection
+</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>2546BF5E-FFA8-43F7-A425-1546018456D2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>{query}</string>
 				<key>variables</key>
@@ -2650,12 +2660,16 @@ setItemPathFilter(query)</string>
 			<key>ypos</key>
 			<integer>430</integer>
 		</dict>
-		<key>243465BD-C285-4E9C-8873-9923CC7888CA</key>
+		<key>2546BF5E-FFA8-43F7-A425-1546018456D2</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>query != _no_selection\n</string>
 			<key>xpos</key>
-			<integer>620</integer>
+			<integer>600</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>1980</integer>
 		</dict>
 		<key>27844699-3B1F-4E94-A055-A5822DD4DB0D</key>
 		<dict>
@@ -2730,7 +2744,7 @@ activateTaskPaper()</string>
 			<key>note</key>
 			<string>getTasksFromMailSelection()</string>
 			<key>xpos</key>
-			<integer>450</integer>
+			<integer>440</integer>
 			<key>ypos</key>
 			<integer>1950</integer>
 		</dict>
@@ -2918,7 +2932,7 @@ activateTaskPaper()</string>
 			<key>note</key>
 			<string>task: {query}</string>
 			<key>xpos</key>
-			<integer>680</integer>
+			<integer>700</integer>
 			<key>ypos</key>
 			<integer>1980</integer>
 		</dict>
@@ -3218,10 +3232,10 @@ activateTaskPaper()</string>
 	<key>variables</key>
 	<dict>
 		<key>SemVer</key>
-		<string>.9.2</string>
+		<string>.9.3</string>
 	</dict>
 	<key>version</key>
-	<string>.9.2</string>
+	<string>.9.3</string>
 	<key>webaddress</key>
 	<string>github.com/robwalton/taskpaper-alfred-workflow</string>
 </dict>

@@ -12,7 +12,6 @@
 //
 // SHOULD
 // - should not automatically make the resource dir folder
-// - domail creates an empty entry if Mail app not open - warn
 // COULD
 // - domail could work Outlook too
 // - work with an alias for the resource dir
@@ -41,6 +40,7 @@
 // - Create new d:choosedoc command to choose a workflow via a dialogue box
 // - Cursor now correctly moves from sidebar to editor pain when selecting an item
 // - Fix 'do' command with no args to now open workflow doc rather than just bring TP forward
+// - domail command warns if Mail app is closed and no longer creates an empty entry
 
 ObjC.import('stdlib');
 ObjC.import('Foundation');
@@ -307,6 +307,15 @@ function createItemsIn(text, id) {
 function getTasksFromMailSelection() {
     // Code from http://support.hogbaysoftware.com/t/mail-to-tp3-script/1520/6
 
+    if (!Application('Mail').running()) {
+        var app = Application.currentApplication()
+        app.includeStandardAdditions = true
+        app.displayAlert(
+            'Cannot create task from email',
+            {message: "Apple's Mail application is not open."}
+        )
+        return '_no_selection' // Downstream filter will check for this
+    }
     selectedMessages = Application("Mail").selection();
 
     function formatSender(name) {
