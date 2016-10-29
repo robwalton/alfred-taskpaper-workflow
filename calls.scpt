@@ -430,7 +430,7 @@ function getProjectsForScriptFilter() {
 
     var stackItem = {
         'uid': '_stack',
-        'title': SB + 'Stack',
+        'title': SB + ' Stack',
         'subtitle': '\t ? items',
         'autocomplete': 'Stack',
         'arg': '_stack',
@@ -438,7 +438,7 @@ function getProjectsForScriptFilter() {
 
     var allItem = {
         'uid': '_all',
-        'title': SB + 'All',
+        'title': SB + ' All',
         'subtitle': '\t ' + projects.length + ' items',
         'autocomplete' : 'All',
         'arg': '_all',
@@ -447,6 +447,33 @@ function getProjectsForScriptFilter() {
     items = [stackItem, allItem];
     items.push(...projects);
     return JSON.stringify({ "items": items})
+}
+
+
+function _TPGenerateProjectItems(editor, options) {
+    //debugger;
+    SB = ' \u25a0\t'
+    var itemList = editor.outline.evaluateItemPath('@type = project')
+    return itemList.map(function(item){
+
+        var depth = item.ancestors.length - 1 // The first is birch.js
+        //debugger
+        if (depth==0) {
+            var prefix = '  \u25B8\t '
+        } else {
+            var prefix = '   '.repeat(depth+1) + '\u25B8   '
+        }
+        if (item.bodyContentString == 'Inbox') {
+            var prefix = SB + ' '
+        }
+        return {
+            'uid': item.id,
+            'title': prefix + item.bodyContentString,
+            'autocomplete': item.bodyString,
+            'subtitle': '\t  ' + item.children.length + ' items',
+            'arg': item.id,
+        }
+    })
 }
 
 
@@ -549,36 +576,6 @@ function countFilteredItemsInTP(itemPath) {
         return itemList.length
     }
     return _evaluateInTP(TPContext, {'itemPath': itemPath})
-}
-
-
-
-
-
-function _TPGenerateProjectItems(editor, options) {
-    //debugger;
-    SB = ' \u25a0\t'
-    var itemList = editor.outline.evaluateItemPath('@type = project')
-    return itemList.map(function(item){
-
-        var depth = item.ancestors.length - 1 // The first is birch.js
-        //debugger
-        if (depth==0) {
-            var prefix = '  \u25B8\t'
-        } else {
-            var prefix = '   '.repeat(depth+1) + '\u25B8   '
-        }
-        if (item.bodyContentString == 'Inbox') {
-            var prefix = SB
-        }
-        return {
-            'uid': item.id,
-            'title': prefix + item.bodyContentString,
-            'autocomplete': item.bodyString,
-            'subtitle': '\t ' + item.children.length + ' items',
-            'arg': item.id,
-        }
-    })
 }
 
 
