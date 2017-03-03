@@ -247,6 +247,8 @@ function selectItemAndClearFilter(id) {
  */
 function createItemsIn(text, id) {
 
+    var text = text.replace(/^\s+|\s+$/g, '')  // remove new lines from start or end
+
     function TPPushToStack(editor, options) {
           var outline = editor.outline;
         //var item = outline.createItem(text)
@@ -344,6 +346,7 @@ function getTasksFromMailSelection() {
             ' ' + mailURL(msg.messageId())
         )
     })
+
     return items.join('\n')
 
 }
