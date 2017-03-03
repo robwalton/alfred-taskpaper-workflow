@@ -3,7 +3,7 @@
 [Alfred 3 workflow](https://www.alfredapp.com/workflows/) to search and create tasks in [TaskPaper 3](https://www.taskpaper.com).
 
 ## Install
-To install, download the most recent releae from [Packal](http://www.packal.org/workflow/taskpaper) and double-click to open in Alfred 2. Alternatively, download what should be the same file released here on github . There are discussion threads on the [TaskPaper forum](http://support.hogbaysoftware.com/t/alfred-2-workflow-for-taskpaper-3/2481) and [Alfred forum](http://www.alfredforum.com/topic/9605-taskpaper3-workflow-for-alfred/).
+To install, download the most recent release from [Packal](http://www.packal.org/workflow/taskpaper) and double-click to open in Alfred 2. Alternatively, download what should be the same file released here on github . There are discussion threads on the [TaskPaper forum](http://support.hogbaysoftware.com/t/alfred-2-workflow-for-taskpaper-3/2481) and [Alfred forum](http://www.alfredforum.com/topic/9605-taskpaper3-workflow-for-alfred/).
 
 ## Configure document and get help
 Use the keywords:
