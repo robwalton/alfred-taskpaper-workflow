@@ -41,6 +41,12 @@
 // - Cursor now correctly moves from sidebar to editor pain when selecting an item
 // - Fix 'do' command with no args to now open workflow doc rather than just bring TP forward
 // - domail command warns if Mail app is closed and no longer creates an empty entry
+// 0.9.4
+// - Fix bug which reults in an extra line under the domail entries
+// - Update to new TP icon
+// - Aesthetic changes to make items in Alfred list much simpler looking
+// - domail now puts URL as comment and uses locale specific date format
+
 
 ObjC.import('stdlib');
 ObjC.import('Foundation');
@@ -48,12 +54,13 @@ ObjC.import('Foundation');
 
 var WORKFLOW_NAME = 'com.github.robwalton.taskpaper-alfred-workflow'
 var DATA_PATH = $.getenv('HOME') + '/Library/Application Support/Alfred 3/Workflow Data/' + WORKFLOW_NAME
-DEBUG = true  // JXA logs to error so remember to switch off!
+DEBUG = false  // JXA logs to error so remember to switch off!
 
 // From http://www.charbase.com/block/geometric-shapes
-
 SB = ' \u25a0\t'  // Special bullet
 PB = '  \u25B8\t'  // Project bullet
+
+
 /**
  * run - Called by Alfred for every run of this script. Calls a named function
  * from this script with given arguments
@@ -330,7 +337,7 @@ function getTasksFromMailSelection() {
     }
 
     function formatDate(date) {
-        return date.toISOString().substring(0, 10)
+        return date.toLocaleDateString()
     }
 
     function mailURL(id) {
@@ -341,9 +348,9 @@ function getTasksFromMailSelection() {
         log('===' + formatSender(msg.sender()) + '===')
         return (
             '- Reply to ' + formatSender(msg.sender()) +
-            ':- ' + msg.subject() +
-            ' (' + formatDate(msg.dateReceived()) + ')' +
-            ' ' + mailURL(msg.messageId())
+            ', RE: ' + msg.subject() +
+            ' ~ ' + formatDate(msg.dateReceived()) +
+            '\n\t\t' + mailURL(msg.messageId())
         )
     })
 
