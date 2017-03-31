@@ -59,6 +59,10 @@ Use the keyword:
 
 - `dopr` to open resources associated with a project or to add a folder or alias resource if none exist.
 
+## Thanks
+- [dfay](https://www.alfredforum.com/profile/3468-dfay/) and [tschoof](https://www.alfredforum.com/profile/3854-tschoof/)for help with Safari interaction
+
+
 ## Versions
 **0.9**
 - Initial public release
