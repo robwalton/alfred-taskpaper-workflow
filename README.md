@@ -14,6 +14,8 @@ Use the keywords:
 ## View document
 Use the keyword:
 - `do` to open the workflow’s TaskPaper document. (Also used to create a task —see below.)
+- `dosn` show (expand) all notes
+- `dohn` hide (collapse) all notes
 
 Use the modifiers:
 - _return_ to view the whole document
@@ -36,7 +38,7 @@ Use the modifiers:
 
 ## Search document
 Use the keywords:
-- `dos` to search for item and select
+- `dos` to search for item and select (see modifiers below).
 - `dop` to search for and then focus on a project.
 - `doss` to select and apply a search saved from the document.
 - `dot` to search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
@@ -85,6 +87,16 @@ Use the keyword:
 - Cursor now correctly moves from sidebar to editor pain when selecting an item
 - Fix `do` command with no args to now open workflow doc rather than just bring TP forward
 - `domail` command warns if Mail app is closed and no longer creates an empty entry
+
+**0.9.4**
+- Fix bug which reults in an extra line under the domail entries
+- Update to new TP icon
+- Aesthetic changes to make items in Alfred list much simpler looking
+- domail now puts URL as comment and uses locale specific date format
+
+**0.9.5**
+- Added `dou` (u for URL) command to capture webpage title, URL and highlighted text
+- Added `dosn` and `dohn` to show or hide notes respectively
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow

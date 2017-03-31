@@ -20,36 +20,6 @@
 // - opening a directory as a project resource should bring the Finder window forward
 
 
-// Versions
-//
-// 0.9
-// - Initial public release
-//
-// 0.9.1
-// - Fix help command to work when no workflow document has been configured
-// - Improve d:setdoc command so that it now shows all TP docs *before* typeing
-// - Improve dop command to focus on projects properly in all cases
-// - Improve search command to now show all items before user starts typing
-// - Add autocomplete to script filters and fix icon references
-// 0.9.2
-// - Fix dop command broken in previous release
-// - Disable the remind screen feature by default
-// - Add feature to toggle the @done or @today tag via the dos [search] command
-// 0.9.3
-// - d:setdoc now warns if Spotlight finds no TaskPaper files
-// - Create new d:choosedoc command to choose a workflow via a dialogue box
-// - Cursor now correctly moves from sidebar to editor pain when selecting an item
-// - Fix 'do' command with no args to now open workflow doc rather than just bring TP forward
-// - domail command warns if Mail app is closed and no longer creates an empty entry
-// 0.9.4
-// - Fix bug which reults in an extra line under the domail entries
-// - Update to new TP icon
-// - Aesthetic changes to make items in Alfred list much simpler looking
-// - domail now puts URL as comment and uses locale specific date format
-// 0.9.5
-// - Added 'dou' (for URL) command to capture webpage title, URL and highlighted text
-
-
 ObjC.import('stdlib');
 ObjC.import('Foundation');
 
@@ -57,6 +27,7 @@ ObjC.import('Foundation');
 var WORKFLOW_NAME = 'com.github.robwalton.taskpaper-alfred-workflow'
 var DATA_PATH = $.getenv('HOME') + '/Library/Application Support/Alfred 3/Workflow Data/' + WORKFLOW_NAME
 DEBUG = false  // JXA logs to error so remember to switch off!
+
 
 // From http://www.charbase.com/block/geometric-shapes
 SB = ' \u25a0\t'  // Special bullet
@@ -146,7 +117,6 @@ function showProject(id) {
 }
 
 
-
 /**
  * setItemPathFilter - Set the value in the search field in TaskPaper
  *
@@ -161,7 +131,6 @@ function setItemPathFilter(itemPathFilter) {
 }
 
 
-
 /**
  * getItemPathFilter - Get the value in the search field in TaskPaper
  *
@@ -174,6 +143,7 @@ function getItemPathFilter() {
     }
     return _evaluateInTP(TPContext, {})
 }
+
 
 /**
  * setFocusedItemToId - Set the value in the search field in TaskPaper
@@ -196,6 +166,7 @@ function setFocusedItemToId(id) {
     }
     _evaluateInTP(TPContext, {id: id})
 }
+
 
 function toggleTag(id, tagName) {
 
@@ -228,6 +199,7 @@ function toggleTag(id, tagName) {
 
     return _evaluateInTP(TPContext, {id: id, tagName: tagName})
 }
+
 
 /**
  * selectItemAndClearFilter - Shows an item in TaskPaper and clears path filter
@@ -311,7 +283,6 @@ function createItemsIn(text, id) {
 }
 
 
-
 /**
  * getTasksFromMailSelection - Create parsable string of tasks from currently
  * Selected Mail items.
@@ -385,6 +356,20 @@ function getItemsFromSafari() {
     return lines.join('\n')
 
 }
+
+
+/**
+ * collapseOrExpandAllNotes - set expansion state of all nodes with notes
+ * * @param {string} desiredState 'Collapsed' or 'Expanded'
+ */
+function collapseOrExpandAllNotes(desiredState) {
+   function TPtoggleNoteExpansion(editor, options) {
+       var noteParentsList = editor.outline.evaluateItemPath('//@type=note/parent::*')
+       editor['set' + options.desiredState](noteParentsList)
+   }
+    _evaluateInTP(TPtoggleNoteExpansion, {desiredState: desiredState})
+};
+
 
 /**
  * generateRemindersText - Create a reminder string based on the configured
