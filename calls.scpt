@@ -234,7 +234,8 @@ function createItemsIn(text, id) {
           var outline = editor.outline;
         //var item = outline.createItem(text)
         var items = ItemSerializer.deserializeItems(options.text, outline, ItemSerializer.TEXTMimeType)
-          outline.root.insertChildrenBefore(items, outline.root.firstChild);
+        editor.setCollapsed(items[0])
+        outline.root.insertChildrenBefore(items, outline.root.firstChild);
     }
 
     function TPAppendChildrenToProject(editor, options) {
@@ -242,6 +243,7 @@ function createItemsIn(text, id) {
         //var item = outline.createItem(text)
         var items = ItemSerializer.deserializeItems(options.text, outline, ItemSerializer.TEXTMimeType)
         var project = editor.outline.getItemForID(options.id)
+        editor.setCollapsed(items[0])
         project.appendChildren(items)
     }
 
@@ -263,6 +265,7 @@ function createItemsIn(text, id) {
         }
         //var item = outline.createItem(text)
         var items = ItemSerializer.deserializeItems(options.text, outline, ItemSerializer.TEXTMimeType)
+        editor.setCollapsed(items[0])
         inbox.insertChildrenBefore(items, inbox.firstChild);
     }
 

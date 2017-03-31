@@ -97,6 +97,7 @@ Use the keyword:
 **0.9.5**
 - Added `dou` (u for URL) command to capture webpage title, URL and highlighted text
 - Added `dosn` and `dohn` to show or hide notes respectively
+- Collapse notes in items added by `do`, `domail` or `dou`
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow
