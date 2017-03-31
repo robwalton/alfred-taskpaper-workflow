@@ -7,26 +7,27 @@ To install, download the most recent release from [Packal](http://www.packal.org
 
 ## Configure document and get help
 Use the keywords:
-- **d:setdoc** to configure the TaskPapar document the workflow will work on. Most commands will prompt for this before they will work
-- **d:choosedoc** to choose the TaskPaper document the workflow will work on via a dialogue box (an alternative to d:setdoc that does not depend on Spotlight to find documents)
-- **d:help** to show a brief summary of commands and settings
+- `d:setdoc` to configure the TaskPapar document the workflow will work on. Most commands will prompt for this before they will work
+- `d:choosedoc` to choose the TaskPaper document the workflow will work on via a dialogue box (an alternative to d:setdoc that does not depend on Spotlight to find documents)
+- `d:help` to show a brief summary of commands and settings
 
 ## View document
 Use the keyword:
-- **do** to open the workflow’s TaskPaper document. (Also used to create a task —see below.)
+- `do` to open the workflow’s TaskPaper document. (Also used to create a task —see below.)
 
 Use the modifiers:
 - _return_ to view the whole document
 - _cmd-return_ to view the Inbox
 - _shift-return_ to view the Stack (see below)
 
-The **do** command, along with opening the configured workflow document, will also pop up the results of the _reminder search_ in front of the document. This can be configured using the keyword:
-- **d:setremind** to view, change or disable the reminder search
+The `do` command, along with opening the configured workflow document, will also pop up the results of the _reminder search_ in front of the document. This can be configured using the keyword:
+- `d:setremind` to view, change or disable the reminder search
 
 ## Create tasks
 Use the keywords:
-- **do <task>** to create a new task. (Also used to view the document —see above.)
-- **domail** to create tasks from emails selected in Apple’s Mail app.
+- `do <task>` to create a new task. (Also used to view the document —see above.)
+- `domail` to create tasks from emails selected in Apple’s Mail app.
+- `dou` (do URL) to create task from Safari page title, URL and highlighted text.
 
 Use the modifiers:
 - _return_ to append tasks to a project
@@ -35,12 +36,12 @@ Use the modifiers:
 
 ## Search document
 Use the keywords:
-- **dos** to search for item and select
-- **dop** to search for and then focus on a project.
-- **doss** to select and apply a search saved from the document.
-- **dot** to search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
+- `dos` to search for item and select
+- `dop` to search for and then focus on a project.
+- `doss` to select and apply a search saved from the document.
+- `dot` to search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
 
-Use the modifiers on **dos** (search):
+Use the modifiers on `dos` (search):
 - _return_ to select the item in TaskPaper
 - _cmd-return_ to toggle the @done tag
 - _shift-return_ to toggle the @today tag
@@ -56,7 +57,7 @@ Projects may have external resources associated with them. These may be files, f
 
 Use the keyword:
 
-- **dopr** to open resources associated with a project or to add a folder or alias resource if none exist.
+- `dopr` to open resources associated with a project or to add a folder or alias resource if none exist.
 
 ## Versions
 **0.9**
@@ -64,22 +65,22 @@ Use the keyword:
 
 **0.9.1**
 - Fix help command to work when no workflow document has been configured
-- Improve d:setdoc command so that it now shows all TP docs *before* typeing
-- Improve dop command to focus on projects properly in all cases
-- Improve search command to now show all items before user starts typing
+- Improve `d:setdoc` command so that it now shows all TP docs *before* typeing
+- Improve `dop` command to focus on projects properly in all cases
+- Improve `dos` command to now show all items before user starts typing
 - Add autocomplete to script filters and fix icon references
 
 **0.9.2**
-- Fix dop (project) command broken in previous release
+- Fix `dop` (project) command broken in previous release
 - Disable the remind screen feature by default
 - Add feature to toggle the @done or @today tag via the dos (search) command
 
 **0.9.3**
-- d:setdoc now warns if Spotlight finds no TaskPaper files and suggesus d:choosedoc
-- Create new d:choosedoc command to choose a workflow via a dialogue box
+- `d:setdoc` now warns if Spotlight finds no TaskPaper files and suggesus d:choosedoc
+- Create new `d:choosedoc` command to choose a workflow via a dialogue box
 - Cursor now correctly moves from sidebar to editor pain when selecting an item
-- Fix 'do' command with no args to now open workflow doc rather than just bring TP forward
-- domail command warns if Mail app is closed and no longer creates an empty entry
+- Fix `do` command with no args to now open workflow doc rather than just bring TP forward
+- `domail` command warns if Mail app is closed and no longer creates an empty entry
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow

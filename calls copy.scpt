@@ -47,7 +47,7 @@
 // - Aesthetic changes to make items in Alfred list much simpler looking
 // - domail now puts URL as comment and uses locale specific date format
 // 0.9.5
-// - Added 'dou' (for URL) command to capture webpage title, URL and highlighted text
+// - Added dotn command to toggle note folding
 
 
 ObjC.import('stdlib');
@@ -385,6 +385,24 @@ function getItemsFromSafari() {
     return lines.join('\n')
 
 }
+
+// 
+// function toggleNoteFolding() {
+//    // http://support.hogbaysoftware.com/t/feature-request-collapse-and-expand-all-notes/2105/4
+//     function TPContext(editor, options) {
+//         'use strict';
+//
+//         var lstNoteParents = editor.outline.evaluateItemPath('//@type=note/parent::*')
+//          // Toggle all on state of first note parent found in document
+//             oParent = lstNoteParents.length ? lstNoteParents[0] : undefined,
+//             strState = oParent && editor.isExpanded(oParent) ? (
+//                 'Collapsed'
+//             ) : 'Expanded';
+//     }
+//     _evaluateInTP(TPContext, {id: id})
+// };
+
+
 
 /**
  * generateRemindersText - Create a reminder string based on the configured
