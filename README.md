@@ -18,10 +18,11 @@ Use the keywords:
 - `dohn` hide (collapse) all notes
 
 Use the modifiers:
-- ↩ to view the whole document
-- ⌘ + ↩ to view the Inbox
-- ⇧ + ↩ to view the Stack (see below)
-- ⌥ + ↩ to view the 'Reading List' project
+- none to view the whole document
+- ⌘ to view the Inbox
+- ⇧ to view the Stack (see below)
+- ⌥ to view the 'Reading List' project
+
 The `do` command, along with opening the configured workflow document, will also pop up the results of the _reminder search_ in front of the document. This can be configured using the keyword:
 - `d:setremind` to view, change or disable the reminder search
 
@@ -32,10 +33,10 @@ Use the keywords:
 - `dorl` (do 'read later') to create task from Safari page title, URL and highlighted text.
 
 Use the modifiers:
-- ↩ to append tasks to a project
-- ⌘ + ↩  to append tasks straight to the Inbox
-- ⇧ + ↩ to add tasks to the top of the Stack (see below)
-- ⌥ + ↩ to add to straight to 'Reading List' project
+- none to append tasks to a project
+- ⌘  to append tasks straight to the Inbox
+- ⇧ to add tasks to the top of the Stack (see below)
+- ⌥ to add to straight to 'Reading List' project
 
 ## Search document
 Use the keywords:
@@ -45,9 +46,9 @@ Use the keywords:
 - `dot` to search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
 
 Use the modifiers on `dos` (search):
-- ↩ to select the item in TaskPaper
-- ⌘ + ↩ to toggle the @done tag
-- ⇧ + ↩ to toggle the @today tag
+- none to select the item in TaskPaper
+- ⌘ to toggle the @done tag
+- ⇧ to toggle the @today tag
 
 ## The Inbox and the Stack
 The workflow operates on two special locations:
