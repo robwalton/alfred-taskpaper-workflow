@@ -12,7 +12,7 @@ Use the keywords:
 - `d:help` to show a brief summary of commands and settings
 
 ## View document
-Use the keyword:
+Use the keywords:
 - `do` to open the workflow’s TaskPaper document. (Also used to create a task —see below.)
 - `dosn` show (expand) all notes
 - `dohn` hide (collapse) all notes
@@ -52,8 +52,8 @@ Use the modifiers on `dos` (search):
 ## The Inbox and the Stack
 The workflow operates on two special locations:
 
-- _Inbox:_ Some commands will operate on a top level project called Inbox. This will be created if need be.
-- _Stack:_ Some commands will operate on the stack. Technically this is comprised of all items outside a project, but for these commands to make sense these items should be grouped at the top of the document. New items will be added to the top of the stack whereas items added to projects will be added to the bottom.
+- **Inbox:** Some commands will operate on a top level project called Inbox. This will be created if need be.
+- **Stack:** Some commands will operate on the stack. Technically this is comprised of all items outside a project, but for these commands to make sense these items should be grouped at the top of the document. New items will be added to the top of the stack whereas items added to projects will be added to the bottom.
 
 ## Project resources
 Projects may have external resources associated with them. These may be files, folders or aliases. They must be stored in the _resource directory_ and are associated with a project by prefixing their name with that of the project. Case does not matter. The resource directory defaults to a location next to the configured TaskPaper document and shares the same name.
@@ -99,6 +99,7 @@ Use the keyword:
 - Added `dorl` (rl for read later) command to capture webpage title, URL and highlighted text
 - Added `dosn` and `dohn` to show or hide notes respectively
 - Collapse notes in items added by `do`, `domail` or `dou`
+- Add 'alt' modifier to act on 'Reading List' project
 
 ## To contribute
 To contribute to the workflow please fork on github: https://github.com/robwalton/alfred-taskpaper-workflow
