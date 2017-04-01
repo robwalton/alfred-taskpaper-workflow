@@ -1,11 +1,10 @@
 In Alfred:
-- Release notes in calls.scpt?
-- Update 'About this workflow'
+- Bump version
 - Check works with ~/Library/Application Support/Alfred 3/Workflow Data/com.github.robwalton.taskpaper-alfred-workflow removed
 - Export workflow from Alfred
 
 Github:
-- Add release notes to README
+- Check release notes in README
 - Create github release and upload workflow
 
 Packal:

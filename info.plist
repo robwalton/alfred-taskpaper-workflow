@@ -3115,30 +3115,9 @@ echo '"'$projectname'"' in '"'$resourcedir'"'</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>See packal.org/workflow/taskpaper for full instructions
+	<string>Worlfow for TaskPaper 3
 
-# Keywords #
-
-- d:setdoc		configure the TaskPapar document with a search
-- d:choosedoc    configure the TaskPaper document with a dialogue box
-- d:help			show a brief summary of commands and settings
-- d:setremind	view, change or disable the reminder search
-
-- do			open the workflow’s TaskPaper document
-- do &lt;task&gt;	create a new task
-- domail		create tasks from emails selected in Apple’s Mail app.
-
-- dos		search for and then select an item. Use modifiers _cmd_ to toggle @done and _shift_ to toggle @today
-- dop		search for and then focus on a project
-- doss		select and apply a search saved from the document
-- dot		search for and then append a tag to any current search. Use the modifier _cmd-return_ to instead clear the search before appending the tag.
-
-- dopr		open resources associated with a project or to add a folder or alias resource if none exist.
-
-# Modifiers #
-(return)			operate on a project
-(cmd-return)		operate on the Inbox
-(shift-return)	operate on the Stack</string>
+For full instructions see: https://github.com/robwalton/alfred-taskpaper-workflow/blob/master/README.md</string>
 	<key>uidata</key>
 	<dict>
 		<key>01479DDF-192E-4252-8C87-BF015C11BB45</key>
