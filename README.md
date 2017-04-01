@@ -29,12 +29,13 @@ The `do` command, along with opening the configured workflow document, will also
 Use the keywords:
 - `do <task>` to create a new task. (Also used to view the document —see above.)
 - `domail` to create tasks from emails selected in Apple’s Mail app.
-- `dou` (do URL) to create task from Safari page title, URL and highlighted text.
+- `dorl` (do 'read later') to create task from Safari page title, URL and highlighted text.
 
 Use the modifiers:
 - _return_ to append tasks to a project
 - _cmd-return_ to append tasks straight to the Inbox
 - _shift-return_ to add tasks to the top of the Stack (see below)
+- _alt-return_ to add to straight to 'Reading List' project
 
 ## Search document
 Use the keywords:
@@ -62,7 +63,7 @@ Use the keyword:
 - `dopr` to open resources associated with a project or to add a folder or alias resource if none exist.
 
 ## Thanks
-- [dfay](https://www.alfredforum.com/profile/3468-dfay/) and [tschoof](https://www.alfredforum.com/profile/3854-tschoof/)for help with Safari interaction
+- [dfay](https://www.alfredforum.com/profile/3468-dfay/) and [tschoof](https://www.alfredforum.com/profile/3854-tschoof/) for help with Safari interaction
 
 
 ## Versions
@@ -94,8 +95,8 @@ Use the keyword:
 - Aesthetic changes to make items in Alfred list much simpler looking
 - domail now puts URL as comment and uses locale specific date format
 
-**0.9.5**
-- Added `dou` (u for URL) command to capture webpage title, URL and highlighted text
+**1.0**
+- Added `dorl` (rl for read later) command to capture webpage title, URL and highlighted text
 - Added `dosn` and `dohn` to show or hide notes respectively
 - Collapse notes in items added by `do`, `domail` or `dou`
 

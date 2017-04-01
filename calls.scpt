@@ -223,7 +223,7 @@ function selectItemAndClearFilter(id) {
  * createItemsIn - Parse string for items and add to TaskPaper
  *
  * @param  {string} text Items string
- * @param  {string} id   Location, a TaskPaper id or '_inbox' or '_stack'
+ * @param  {string} id   Location, a TaskPaper id or '_inbox', '_stack' or '_read_later'
  * @return {string}      A string to use in a notification
  */
 function createItemsIn(text, id) {
@@ -247,32 +247,49 @@ function createItemsIn(text, id) {
         project.appendChildren(items)
     }
 
-    function TPPrependToInbox(editor, options) {
-        var outline = editor.outline;
-
-        // Ensure there is an Inbox
-        var inbox = outline.evaluateItemPath("//Inbox:")[0];
-        if (!inbox) {
-            inbox = outline.createItem("Inbox:");
+    function TPEnsureProjectExists(editor, options) {
+        var projectName = options.projectName
+        var outline = editor.outline
+        var project = outline.evaluateItemPath("//" + projectName + ":")[0];
+        if (!project) {
+            project = outline.createItem(projectName + ":");
             var projects = editor.outline.evaluateItemPath('@type = project')
             if (projects.length == 0) {
                 // Add to end of document
-                outline.root.appendChildren(inbox)
+                outline.root.appendChildren(project)
             } else {
                 // Add before first project
-                outline.root.insertChildrenBefore(inbox, projects[0]);
+                outline.root.insertChildrenBefore(project, projects[0]);
             }
         }
-        //var item = outline.createItem(text)
+    }
+
+    function TPPrependToInbox(editor, options) {
+        var outline = editor.outline;
         var items = ItemSerializer.deserializeItems(options.text, outline, ItemSerializer.TEXTMimeType)
+        var inbox = outline.evaluateItemPath("//Inbox:")[0]
         editor.setCollapsed(items[0])
         inbox.insertChildrenBefore(items, inbox.firstChild);
     }
 
+    function TPAppendToReadingList(editor, options) {
+        var outline = editor.outline;
+        var items = ItemSerializer.deserializeItems(options.text, outline, ItemSerializer.TEXTMimeType)
+        var readLater = outline.evaluateItemPath("//Reading List:")[0]
+        editor.setCollapsed(items[0])
+        readLater.appendChildren(items)
+    }
+
     if (id == '_inbox') {
         // Create Inbox if required and append
+        _evaluateInTP(TPEnsureProjectExists, {projectName: "Inbox"})
         _evaluateInTP(TPPrependToInbox, {text: text})
         return "Added to Inbox"
+    } else if (id == '_read_later') {
+        // Create Inbox if required and append
+        _evaluateInTP(TPEnsureProjectExists, {projectName: "Reading List"})
+        _evaluateInTP(TPAppendToReadingList, {text: text})
+        return "Added to 'Reading List' project"
     } else if (id == '_stack') {
         // Add task at top of file
         _evaluateInTP(TPPushToStack, {text: text})
@@ -323,9 +340,9 @@ function getTasksFromMailSelection() {
     items = selectedMessages.map(function(msg) {
         log('===' + formatSender(msg.sender()) + '===')
         return (
-            '- Reply to ' + formatSender(msg.sender()) +
-            ', RE: ' + msg.subject() +
-            ' ~ ' + formatDate(msg.dateReceived()) +
+            '- Reply to: “' + formatSender(msg.sender()) + '”' +
+            ' - “' + msg.subject() + '”' +
+            ' - ' + formatDate(msg.dateReceived()) +
             '\n\t\t' + mailURL(msg.messageId())
         )
     })
@@ -349,7 +366,7 @@ function getItemsFromSafari() {
     var selection = safari.doJavaScript("(''+getSelection())", { in: currentTab })
 
     var lines = []
-    lines.push('- Read page: ' + doc.name())
+    lines.push('- Read page: “' + doc.name() + '”')
     lines.push('\t\t' + doc.url())
     if (selection.length > 0 ){
         var selectionLines = selection.split('\n')
