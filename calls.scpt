@@ -19,7 +19,19 @@
 // - have a way to add additional resources to a project
 // - opening a directory as a project resource should bring the Finder window forward
 
-
+// ===
+// Draft breakdown for 'lower friction mail grab':
+// [] 1. refactor (decouple script from workflow; simplify script API and reduce duplicated code)
+// []   a. seperate out ensuring a folder exists from creating an item
+// []   b. call this from something that gets the id of named project when necessary
+// []   c. create function to append or prepend to a project by id only
+// []   (TEST existing functionality which is at risk)
+// [] 2.a use the new bits to create the ctrl/m workflow (should have all the pieces and configure target project as alfeed workflow variable)
+// []   b. add as alt-return to domain (to match dorl command)
+// [] 3. Fix existing mail formating for multi messages
+// [] 4. provide way to pass mail msg format passed down as string into script call
+// [] 4.(TEST new functionality, olf functionlity should be untouched)
+// ===
 ObjC.import('stdlib');
 ObjC.import('Foundation');
 
