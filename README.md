@@ -30,7 +30,9 @@ The `do` command, along with opening the configured workflow document, will also
 Use the keywords:
 - `do <task>` to create a new task. (Also used to view the document —see above.)
 - `domail` to create tasks from emails selected in Apple’s Mail app.
+- `domp` to create tasks from emails selected in Mailplane 3 app.
 - `dorl` (do 'read later') to create task from Safari page title, URL and highlighted text.
+- `doch` (do 'read later from Chrome') to create task from Chrome page title, URL and highlighted text.
 
 Use the modifiers:
 - none to append tasks to a project
