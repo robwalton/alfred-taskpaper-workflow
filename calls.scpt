@@ -353,6 +353,28 @@ function getTasksFromMailSelection() {
 
 
 /**
+ * getTasksFromMailPlane - Create parsable string of tasks from currently
+ * Selected MailPlane item.
+ *
+ * @return {string}  Possibly multiline list, suitable for calls to createItemsIn
+ */
+function getTasksFromMailplane() {
+
+    var mp = Application('Mailplane 3')
+    var url = mp.currenturl()
+    var name = mp.currenttitle()
+
+    var items = []
+
+    items.push('- Reply to: "' + name + '"')
+    items.push('\t\t' + url)
+
+    return items.join('\n')
+
+}
+
+
+/**
  * getItemsFromSafari - Create parsable string of task and indented notes from currently
  * Selected Mail items.
  *
@@ -375,6 +397,32 @@ function getItemsFromSafari() {
 
     return lines.join('\n')
 
+}
+
+
+/**
+ * getItemsFromChrome - Create parsable string of task and indented notes from currently
+ * active Chrome tab.
+ *
+ * @return {string}  Possibly multiline list, suitable for calls to createItemsIn
+ */
+function getItemsFromChrome() {
+
+    var chrome = Application('Google Chrome')
+    var currentTab = chrome.windows[0].activeTab
+    var url = currentTab.url()
+    var name = currentTab.name()
+    var selection = currentTab.execute({javascript:'window.getSelection().toString()'})
+
+    var lines = []
+    lines.push('- Read page: “' + name + '”')
+    lines.push('\t\t' + url)
+    if (selection.length > 0 ){
+        var selectionLines = selection.split('\n')
+        lines.push('\t\t"' + selectionLines.join('\n\t\t') + '"')
+    }
+
+    return lines.join('\n')
 }
 
 
