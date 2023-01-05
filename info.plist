@@ -1284,7 +1284,7 @@ if not find_cmd_result:
     check_output(dialogue_cmd, shell=True)
     path_list = []
 else:
-	path_list = find_cmd_result.split('\n')
+	path_list = find_cmd_result.decode("utf-8").split('\n')
 
 items = []
 for path in path_list:
